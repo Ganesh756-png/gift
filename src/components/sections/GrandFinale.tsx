@@ -185,9 +185,17 @@ export default function GrandFinale({ onReplay }: GrandFinaleProps) {
                     background: 'linear-gradient(135deg, #b8860b, #e6b980)',
                   }}
                 >
-                  <div className="bg-romantic-night/80 backdrop-blur-sm rounded flex items-center justify-center"
+                  <div className="bg-romantic-night/80 backdrop-blur-sm rounded flex items-center justify-center overflow-hidden relative"
                     style={{ width: '220px', height: '180px' }}
                   >
+                    <img
+                      src="/photos/photo1.jpeg"
+                      alt="Your Special Photo"
+                      className="absolute inset-0 w-full h-full object-cover z-10"
+                      onError={(e) => {
+                        (e.target as HTMLElement).style.display = 'none';
+                      }}
+                    />
                     <div className="text-center">
                       <span className="text-4xl block mb-2">📸</span>
                       <p className="text-amber-300/70 text-sm font-serif italic">Your Special Photo</p>

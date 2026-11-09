@@ -109,14 +109,24 @@ export default function MemoryBox({ onClose }: MemoryBoxProps) {
             >
               {/* Decorative photo frame */}
               <div className="relative">
-                <div className="w-48 h-48 rounded-2xl bg-gradient-to-br from-rose-200 via-pink-100 to-amber-100 flex items-center justify-center shadow-lg border-4 border-white/80">
+                <div className="w-48 h-48 rounded-2xl bg-gradient-to-br from-rose-200 via-pink-100 to-amber-100 flex items-center justify-center shadow-lg border-4 border-white/80 overflow-hidden relative">
+                  {current.src ? (
+                    <img
+                      src={current.src}
+                      alt={current.caption}
+                      className="absolute inset-0 w-full h-full object-cover z-10"
+                      onError={(e) => {
+                        (e.target as HTMLElement).style.display = 'none';
+                      }}
+                    />
+                  ) : null}
                   <span className="text-6xl">{current.emoji || '💝'}</span>
                 </div>
                 {/* Frame corner decorations */}
-                <div className="absolute -top-2 -left-2 text-lg">✿</div>
-                <div className="absolute -top-2 -right-2 text-lg">✿</div>
-                <div className="absolute -bottom-2 -left-2 text-lg">✿</div>
-                <div className="absolute -bottom-2 -right-2 text-lg">✿</div>
+                <div className="absolute -top-2 -left-2 text-lg z-20">✿</div>
+                <div className="absolute -top-2 -right-2 text-lg z-20">✿</div>
+                <div className="absolute -bottom-2 -left-2 text-lg z-20">✿</div>
+                <div className="absolute -bottom-2 -right-2 text-lg z-20">✿</div>
               </div>
 
               <h4 className="font-serif text-xl text-gray-800 mt-4">

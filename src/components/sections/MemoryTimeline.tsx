@@ -128,6 +128,8 @@ interface PolaroidCardProps {
 }
 
 function PolaroidCard({ photo, index, gradient, onClick }: PolaroidCardProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
   const rotation = index % 2 === 0 ? -3 : 3;
 
   return (
@@ -155,19 +157,33 @@ function PolaroidCard({ photo, index, gradient, onClick }: PolaroidCardProps) {
           className="w-full aspect-[4/3] rounded-sm overflow-hidden relative"
           style={{ background: gradient }}
         >
+          {photo.src && !imageError && (
+            <img
+              src={photo.src}
+              alt={photo.caption}
+              className={`w-full h-full object-cover transition-opacity duration-300 ${
+                imageLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              onLoad={() => setImageLoaded(true)}
+              onError={() => setImageError(true)}
+            />
+          )}
+
           {/* Placeholder content */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-white/90">
-            <motion.span
-              className="text-4xl mb-2"
-              animate={{ y: [0, -4, 0] }}
-              transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              {['📷', '🌅', '✨', '💕', '🌸', '🎉'][index % 6]}
-            </motion.span>
-            <p className="text-xs font-medium text-center px-4 leading-relaxed opacity-80">
-              {photo.caption}
-            </p>
-          </div>
+          {(!photo.src || imageError || !imageLoaded) && (
+            <div className={`absolute inset-0 flex flex-col items-center justify-center text-white/90 ${photo.src && !imageError ? 'pointer-events-none' : ''}`}>
+              <motion.span
+                className="text-4xl mb-2"
+                animate={{ y: [0, -4, 0] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                {['📷', '🌅', '✨', '💕', '🌸', '🎉'][index % 6]}
+              </motion.span>
+              <p className="text-xs font-medium text-center px-4 leading-relaxed opacity-80">
+                {photo.caption}
+              </p>
+            </div>
+          )}
 
           {/* Subtle shine overlay */}
           <div
@@ -212,6 +228,9 @@ interface LightboxModalProps {
 }
 
 function LightboxModal({ photo, gradient, onClose }: LightboxModalProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
   return (
     <motion.div
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -250,10 +269,23 @@ function LightboxModal({ photo, gradient, onClose }: LightboxModalProps) {
           className="w-full aspect-[4/3] rounded-md overflow-hidden relative"
           style={{ background: gradient }}
         >
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
-            <span className="text-6xl mb-3">📸</span>
-            <p className="text-sm font-medium opacity-80">Your photo will appear here</p>
-          </div>
+          {photo.src && !imageError && (
+            <img
+              src={photo.src}
+              alt={photo.caption}
+              className={`w-full h-full object-cover transition-opacity duration-300 ${
+                imageLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              onLoad={() => setImageLoaded(true)}
+              onError={() => setImageError(true)}
+            />
+          )}
+          {(!photo.src || imageError || !imageLoaded) && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+              <span className="text-6xl mb-3">📸</span>
+              <p className="text-sm font-medium opacity-80">Your photo will appear here</p>
+            </div>
+          )}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
