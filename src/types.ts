@@ -16,12 +16,12 @@ export function getBirthdayDate(refYear?: number): Date {
 }
 
 export const SAMPLE_PHOTOS: Photo[] = [
-  { id: '1', src: '/photos/photo1.jpg', caption: 'A Beautiful Memory ❤️', date: '2026' },
-  { id: '2', src: '/photos/photo2.jpg', caption: 'Together, Always 💕', date: '2026' },
-  { id: '3', src: '/photos/photo3.jpg', caption: 'This Moment Was Perfect ✨', date: '2026' },
-  { id: '4', src: '/photos/photo4.jpg', caption: 'You Make Everything Better 🌹', date: '2026' },
-  { id: '5', src: '/photos/photo5.jpg', caption: 'My Favorite Smile 😊', date: '2026' },
-  { id: '6', src: '/photos/photo6.jpg', caption: 'Forever & Always 💫', date: '2026' },
+  { id: '1', src: '/photos/photo1', caption: 'A Beautiful Memory ❤️', date: '2026' },
+  { id: '2', src: '/photos/photo2.jpeg', caption: 'Together, Always 💕', date: '2026' },
+  { id: '3', src: '/photos/photo3.jpeg', caption: 'This Moment Was Perfect ✨', date: '2026' },
+  { id: '4', src: '/photos/photo4.jpeg', caption: 'You Make Everything Better 🌹', date: '2026' },
+  { id: '5', src: '/photos/photo5.jpeg', caption: 'My Favorite Smile 😊', date: '2026' },
+  { id: '6', src: '/photos/photo6.jpeg', caption: 'Forever & Always 💫', date: '2026' },
 ];
 
 export const ROMANTIC_MESSAGES = [
