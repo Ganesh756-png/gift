@@ -16,7 +16,7 @@ export function getBirthdayDate(refYear?: number): Date {
 }
 
 export const SAMPLE_PHOTOS: Photo[] = [
-  { id: '1', src: '/photos/photo1', caption: 'A Beautiful Memory ❤️', date: '2026' },
+  { id: '1', src: '/photos/photo1.jpeg', caption: 'A Beautiful Memory ❤️', date: '2026' },
   { id: '2', src: '/photos/photo2.jpeg', caption: 'Together, Always 💕', date: '2026' },
   { id: '3', src: '/photos/photo3.jpeg', caption: 'This Moment Was Perfect ✨', date: '2026' },
   { id: '4', src: '/photos/photo4.jpeg', caption: 'You Make Everything Better 🌹', date: '2026' },
