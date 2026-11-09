@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, type TargetAndTransition } from 'framer-motion';
 import { ROMANTIC_MESSAGES } from '../../types';
 
 interface SparkleParticle {
@@ -146,7 +146,7 @@ export default function ToyWonderland() {
     { emoji: '🌟', name: 'Magic Star', handler: handleStar, desc: 'Click for sparkles!' },
   ];
 
-  const getEmojiAnimation = (index: number) => {
+  const getEmojiAnimation = (index: number): TargetAndTransition => {
     switch (index) {
       case 0: // Teddy wave
         return state.waving
